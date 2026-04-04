@@ -1,18 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import MainLayout from "../layout/MainLayout";
+import Home from "../pages/customer/Home";
+import MyOrders from "../pages/customer/MyOrders";
+import AdminDashboard from "../pages/admin/AdminDashboard";
+import DeliveryDashboard from "../pages/agent/DeliveryDashboard";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
-
-import CustomerDashboard from "../pages/customer/CustomerDashboard";
-import Checkout from "../pages/customer/Checkout";
-import TrackOrder from "../pages/customer/TrackOrder";
-
-import AdminDashboard from "../pages/admin/AdminDashboard";
-import ManageOrders from "../pages/admin/ManageOrders";
-import ManageProducts from "../pages/admin/ManageProducts";
-
-import AgentDashboard from "../pages/agent/AgentDashboard";
-import MyDeliveries from "../pages/agent/MyDeliveries";
 
 export default function AppRoutes() {
   return (
@@ -22,19 +16,39 @@ export default function AppRoutes() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Customer */}
-        <Route path="/customer" element={<CustomerDashboard />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/track" element={<TrackOrder />} />
-
-        {/* Admin */}
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/orders" element={<ManageOrders />} />
-        <Route path="/admin/products" element={<ManageProducts />} />
-
-        {/* Delivery Agent */}
-        <Route path="/agent" element={<AgentDashboard />} />
-        <Route path="/agent/deliveries" element={<MyDeliveries />} />
+        {/* Main App Layout */}
+        <Route
+          path="/home"
+          element={
+            <MainLayout>
+              <Home />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/my-orders"
+          element={
+            <MainLayout>
+              <MyOrders />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <MainLayout>
+              <AdminDashboard />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/deliveries"
+          element={
+            <MainLayout>
+              <DeliveryDashboard />
+            </MainLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
